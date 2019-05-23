@@ -22,7 +22,9 @@ public class sceneManager : MonoBehaviour
         //To initialize a second set of buttons, copy pasta these 4 following lines of code and follow instructions
         for(int i = 0; i < setOne.Length; i++) //replace "setOne" with the name of the next array of objects
         {
-            buttonsToActivate[0][i] = setOne[i]; //change the 0 the next number in the sequence (for 2 sets, it would be a 1, for 3, it would be a 2), and replace setOne as above
+            //Debug.Log("Got to the first For loop");
+            //buttonsToActivate[0][i] = setOne[i]; //change the 0 the next number in the sequence (for 2 sets, it would be a 1, for 3, it would be a 2), and replace setOne as above
+            //Debug.Log("Made it through");
         }
     }
 
@@ -48,10 +50,16 @@ public class sceneManager : MonoBehaviour
 
     private void SetActiveButtons(int i)
     {
-        for(int j = 0; j < buttonsToActivate[i].Length; j++)
+        //for(int j = 0; j < buttonsToActivate[i].Length; j++)
+        //{
+        //    buttonsToActivate[i][j].SetActive(true);
+        //}
+        for (int j = 0; j <= setOne.Length; j++)
         {
-            buttonsToActivate[i][j].SetActive(true);
+            Debug.Log(j);
+            setOne[j].SetActive(true);
         }
+
     }
 
     private void DeactivateActiveButtons() //Finds all currently active buttons in the scene and deactivates them

@@ -16,10 +16,15 @@ public class buttonLogic : MonoBehaviour
     [Header("use this section if you are changing an image of a panel")]
     public GameObject imagePanel;
     public Sprite newSprite;
+    public Color newColor;
 
     [Header("Use this section to change currently active buttons")]
     public GameObject[] buttonsToDeactivate;
     public GameObject[] buttonsToActivate;
+
+    [Header("Use this section to change a single instant of text")]
+    public Text textToChange;
+    public string text;
 
     public bool hasBeenClicked = false;
 
@@ -53,6 +58,7 @@ public class buttonLogic : MonoBehaviour
     public void ChangeImageOnButtonPress() //changes specified game object's image to specified image
     {
         imagePanel.GetComponent<Image>().sprite = newSprite;
+        imagePanel.GetComponent<Image>().color = newColor;
         hasBeenClicked = true;
     }
 
@@ -72,5 +78,10 @@ public class buttonLogic : MonoBehaviour
     public void doNothing() //A button that does nothing
     {
         hasBeenClicked = true;
+    }
+
+    public void changeText() //Changes text to the displayed text
+    {
+        textToChange.text = text;
     }
 }
