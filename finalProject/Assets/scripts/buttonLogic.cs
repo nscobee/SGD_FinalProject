@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class buttonLogic : MonoBehaviour
 {
@@ -83,5 +84,10 @@ public class buttonLogic : MonoBehaviour
     public void changeText() //Changes text to the displayed text
     {
         textToChange.text = text;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
