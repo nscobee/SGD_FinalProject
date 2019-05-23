@@ -12,11 +12,13 @@ public class sceneManager : MonoBehaviour
     public int currentEventToManage = 0;
     public GameObject[][] buttonsToActivate; //because unity hates multidimensional arrays, each set will need to be manually initialized in start method (copy pasta example) 
     public GameObject[] setOne;
+    private bool canTransitionButtons = true;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        
         //To initialize a second set of buttons, copy pasta these 4 following lines of code and follow instructions
         for(int i = 0; i < setOne.Length; i++) //replace "setOne" with the name of the next array of objects
         {
@@ -27,9 +29,18 @@ public class sceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(buttonPressEvents[currentEventToManage].allButtonsClicked)
+        //this block does a few things:
+        //Checks if all buttons have been clicked
+        //Once they have been clicked, it deactivates active buttons, then actives all the buttons in the current set
+        //the bool makes sure this is only done once, and not every frame
+        //it then changes the multidimentional array to get ready for the next set to be managed
+        if(buttonPressEvents[currentEventToManage].allButtonsClicked && canTransitionButtons)
         {
-
+            canTransitionButtons = false;
+            DeactivateActiveButtons();
+            SetActiveButtons(currentEventToManage);
+            currentEventToManage++;
+            canTransitionButtons = true;
         }
     }
 

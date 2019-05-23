@@ -21,7 +21,7 @@ public class buttonLogic : MonoBehaviour
     public GameObject[] buttonsToDeactivate;
     public GameObject[] buttonsToActivate;
 
-    
+    public bool hasBeenClicked = false;
 
 
     // Start is called before the first frame update
@@ -40,17 +40,20 @@ public class buttonLogic : MonoBehaviour
     public void NextTextOnButtonPress() //when button is pressed, make the text progress, intended to be used when button input only moves text along
     {
         textPanel.GetComponent<textPopUps>().NextText();
+        hasBeenClicked = true;
     }
 
     public void NextPanelOnButtonPress() //on button press, change panel to one to the other. Assumes 1 active text box at a time
     {
         activePanel.SetActive(false);
         nextPanel.SetActive(true);
+        hasBeenClicked = true;
     }
 
     public void ChangeImageOnButtonPress() //changes specified game object's image to specified image
     {
         imagePanel.GetComponent<Image>().sprite = newSprite;
+        hasBeenClicked = true;
     }
 
     public void ChangeActiveButtonsOnButtonPress() //deactives and activates buttons in respective arrays
@@ -63,5 +66,11 @@ public class buttonLogic : MonoBehaviour
         {
             buttonsToActivate[i].SetActive(true);
         }
+        hasBeenClicked = true;
+    }
+
+    public void doNothing() //A button that does nothing
+    {
+        hasBeenClicked = true;
     }
 }
